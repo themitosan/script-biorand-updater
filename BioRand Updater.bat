@@ -17,6 +17,7 @@
 :: Set echo off, set current branch var and call main menu
 @echo off
 set branch=master
+set openPath=false
 call:fnMainMenu
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -45,6 +46,7 @@ call:fnMainMenu
 
 	:: Check if folder exists
 	if not exist biorand/ (
+		set openPath=true
 		echo INFO - BioRand folder was not found!
 		echo A new installation will be performed - Please wait...
 		echo [If this is your first time running this script, this process may take a while!]
@@ -79,11 +81,12 @@ call:fnMainMenu
 	msbuild biorand.sln /t:build /p:Configuration=Release
 
 	:: Open build folder
-	title BioRand Updater [Branch: %branch%] - Step (5 / 5) - Opening build path 
-	echo.
-	echo 5) Opening build path
-	echo.
-	call explorer "biorand\bin\Release\net472"
+	if %openPath% == true (
+		echo.
+		echo Opening build path
+		echo.
+		call explorer "biorand\bin\Release\net472"
+	)
 	cd ..
 
 	:: Display process complete message
