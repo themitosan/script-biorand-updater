@@ -1,5 +1,5 @@
 # script-biorand-updater
-This is a small script that allows the user updating / compiling biorand project locally.
+This is a small script that allows the user updating / compiling [BioRand](https://github.com/intelorca/biorand) project locally.
 
 ## How to use
 - Download / clone this repo
