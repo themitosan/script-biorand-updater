@@ -8,7 +8,7 @@ This is a small script that allows the user updating / compiling [BioRand](https
 
 If everything is ok, it will open output folder with all files inside.
 
-__Important__: To run this script, you will need [Git](https://git-scm.com/) and [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) installed on your computer.
+__Important__: To run this script, you will need [Git](https://git-scm.com/) and [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) with required modules to run properly.
 <br>
 
 <sup> [BioRand](https://github.com/IntelOrca/biorand) is a Classic Resident Evil Randomizer created by [IntelOrca](https://github.com/IntelOrca). </sup>
