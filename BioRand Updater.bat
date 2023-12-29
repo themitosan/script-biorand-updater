@@ -31,7 +31,7 @@ call:fnMainMenu
 	:: Clear screen and update res.
 	cls
 	color f
-	mode con:cols=180 lines=50
+	mode con:cols=180 lines=44
 
 	:: Display warning
 	echo.
@@ -72,9 +72,9 @@ call:fnMainMenu
 	dotnet restore
 
 	:: Build soluction
-	title BioRand Updater [Branch: %branch%] - Step (4 / 5) - Building VS2022 Soluction...
+	title BioRand Updater [Branch: %branch%] - Step (4 / 5) - Building Visual Studio 2022 Soluction...
 	echo.
-	echo 4) Building VS2022 Soluction...
+	echo 4) Building Visual Studio 2022 Soluction...
 	echo.
 	msbuild biorand.sln /t:build /p:Configuration=Release
 
@@ -83,7 +83,7 @@ call:fnMainMenu
 	echo.
 	echo 5) Opening build path
 	echo.
-	call explorer "biorand\biorand\bin\Release\net472"
+	call explorer "biorand\bin\Release\net472"
 	cd ..
 
 	:: Display process complete message
@@ -176,10 +176,10 @@ goto:eof
 	echo   2) Change branch
 	echo   3) Exit
 	echo.
-	
+
 	:: Read input
 	set /p input= Your choice: 
-	
+
 	:: Check input
 	if /I %input% == 1 call:fnStartProcess
 	if /I %input% == 2 call:fnUpdateBranch
