@@ -17,7 +17,6 @@
 :: Set echo off, set current branch var and call main menu
 @echo off
 set branch=master
-set openPath=false
 call:fnMainMenu
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -46,7 +45,6 @@ call:fnMainMenu
 
 	:: Check if folder exists
 	if not exist biorand/ (
-		set openPath=true
 		echo INFO - BioRand folder was not found!
 		echo A new installation will be performed - Please wait...
 		echo [If this is your first time running this script, this process may take a while!]
@@ -80,28 +78,52 @@ call:fnMainMenu
 	echo.
 	msbuild biorand.sln /t:build /p:Configuration=Release
 
-	:: Open build folder
-	if %openPath% == true (
-		echo.
-		echo Opening build path
-		echo.
-		call explorer "biorand\bin\Release\net472"
-	)
-	cd ..
+	:: Call process complete
+	call:fnProcessComplete
+
+goto:eof
+
+::
+:: Function - Process complete
+::
+:fnProcessComplete
 
 	:: Display process complete message
 	title BioRand Updater - Process Complete!
-	mode con:cols=73 lines=6
+	mode con:cols=73 lines=14
 	color a
 	echo.
 	echo =========================================================================
 	echo.
-	echo               Process Complete - Press any key to return
+	echo                            Process Complete!
 	echo.
 	echo =========================================================================
-	pause
+	echo.
+	echo Please select your next action:
+	echo.
+	echo    1) Go back to main menu
+	echo    2) Open BioRand Folder and quit
+	echo    3) Exit
+	echo.
 
-	:: Call main menu
+	:: Read input
+	set /p input= Your choice: 
+
+	:: Check input
+	if /I %input% == 1 cd.. && call:fnMainMenu
+	if /I %input% == 2 call:fnOpenFolderAndQuit
+	if /I %input% == 3 call:fnExit
+	exit
+
+goto:eof
+
+::
+:: Function - Open folder and quit
+::
+:fnOpenFolderAndQuit
+
+	call explorer "biorand\bin\Release\net472"
+	cd ..
 	call:fnMainMenu
 
 goto:eof
