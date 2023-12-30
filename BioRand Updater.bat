@@ -34,8 +34,11 @@ call:fnMainMenu
 	mode con:cols=180 lines=44
 
 	:: Display warning
+	echo ============================================================================
 	echo.
-	echo IMPORTANT: DO NOT CLOSE THIS WINDOW WHILE THIS PROCESS IS RUNNING!
+	echo     IMPORTANT: DO NOT CLOSE THIS WINDOW WHILE THIS PROCESS IS RUNNING!
+	echo.
+	echo ============================================================================
 
 	:: Pull latest changes from github
 	title BioRand Updater [Branch: %branch%] - Step (1 / 5) - Pulling latest changes from GitHub...
@@ -101,9 +104,9 @@ goto:eof
 	echo.
 	echo Please select your next action:
 	echo.
-	echo    1) Go back to main menu
-	echo    2) Open BioRand Folder and quit
-	echo    3) Exit
+	echo   1) Go back to main menu
+	echo   2) Open BioRand folder and quit
+	echo   3) Exit
 	echo.
 
 	:: Read input
