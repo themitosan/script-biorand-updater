@@ -104,8 +104,8 @@ goto:eof
 	echo.
 	echo Please select your next action:
 	echo.
-	echo   1) Go back to main menu
-	echo   2) Open BioRand folder and quit
+	echo   1) Return to main menu
+	echo   2) Open BioRand folder and return
 	echo   3) Exit
 	echo.
 
