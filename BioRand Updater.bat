@@ -14,9 +14,10 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:: Set echo off, set current branch var and call main menu
+:: Set echo off, variables and call main menu
 @echo off
 set branch=master
+set "deleteFiles=false"
 call:fnMainMenu
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -36,9 +37,18 @@ call:fnMainMenu
 	:: Display warning
 	echo ============================================================================
 	echo.
-	echo     IMPORTANT: DO NOT CLOSE THIS WINDOW WHILE THIS PROCESS IS RUNNING!
+	echo      IMPORTANT: DO NOT CLOSE THIS WINDOW WHILE THIS PROCESS IS RUNNING!
 	echo.
 	echo ============================================================================
+
+	:: Check if needs to remove previous build
+	if "%deleteFiles%" == "true" (
+		title BioRand Updater [Branch: %branch%] - Removing previous build files...
+		echo.
+		echo INFO - Removing previous build files - Please wait...
+		echo.
+		rmdir /s /q "biorand/biorand/bin/Release"
+	)
 
 	:: Pull latest changes from github
 	title BioRand Updater [Branch: %branch%] - Step (1 / 5) - Pulling latest changes from GitHub...
@@ -183,7 +193,7 @@ goto:eof
 :fnMainMenu
 
 	:: Update screen size
-	mode con:cols=73 lines=16
+	mode con:cols=73 lines=18
 
 	:: Clear screen and display main GUI
 	cls
@@ -193,16 +203,18 @@ goto:eof
 	echo                 BioRand Updater - Created By @TheMitoSan
 	echo =========================================================================
 	echo.
-	echo           WARN: This script requires Git and VS2022 installed!
+	echo  WARN: This script requires online connection, Git and VS2022 installed!
 	echo          Also, msbuild and dotnet must be present on your PATH.
 	echo.
 	echo =========================================================================
 	echo.
 	echo Please - select your action:
 	echo.
-	echo   1) Update project using selected branch (%branch%)
-	echo   2) Change branch
-	echo   3) Exit
+	echo   1) Fast update project using selected branch (%branch%)
+	echo   2) Remove previous files and build a new soluction from selected
+	echo      branch (%branch%)
+	echo   3) Change branch
+	echo   4) Exit
 	echo.
 
 	:: Read input
@@ -210,8 +222,9 @@ goto:eof
 
 	:: Check input
 	if /I %input% == 1 call:fnStartProcess
-	if /I %input% == 2 call:fnUpdateBranch
-	if /I %input% == 3 call:fnExit
+	if /I %input% == 2 set "deleteFiles=true" && call:fnStartProcess
+	if /I %input% == 3 call:fnUpdateBranch
+	if /I %input% == 4 call:fnExit
 	exit
 
 goto:eof
