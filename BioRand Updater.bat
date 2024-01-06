@@ -21,7 +21,11 @@ set "deleteFiles=false"
 call:fnMainMenu
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::::: Functions ::::::::::::::::::::::::::
+:::::::::::::::::::://///          ::::::::::::::::::::::::::
+::::::::::::::::::::               ::::::::::::::::::::::::::
+::::::::::::::::::::   Functions   ::::::::::::::::::::::::::
+::::::::::::::::::::               ::::::::::::::::::::::::::
+::::::::::::::::::::           ////::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::
@@ -135,7 +139,7 @@ goto:eof
 ::
 :fnOpenFolderAndQuit
 
-	call explorer "biorand\bin\Release\net472"
+	call explorer "biorand\bin\Release"
 	cd ..
 	call:fnMainMenu
 
@@ -173,12 +177,13 @@ goto:eof
 
 	:: Update screen size and GUI
 	title BioRand Updater - Goodbye :D
-	mode con:cols=73 lines=8
+	mode con:cols=73 lines=9
 	color f
 	cls
 	echo.
 	echo =========================================================================
 	echo.
+	echo                             TheMitoSan Says:
 	echo                      This is it - Have a nice day!
 	echo.
 	echo =========================================================================
