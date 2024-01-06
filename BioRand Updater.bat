@@ -47,7 +47,7 @@ call:fnMainMenu
 		echo.
 		echo INFO - Removing previous build files - Please wait...
 		echo.
-		rmdir /s /q "biorand/biorand/bin/Release"
+		rmdir /s /q "biorand"
 	)
 
 	:: Pull latest changes from github
