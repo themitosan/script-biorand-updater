@@ -33,6 +33,30 @@ call:fnMainMenu
 ::
 :fnStartProcess
 
+	:: Display warning
+	if "%deleteFiles%" == "false" (
+		title BioRand Updater - IMPORTANT INFO
+		mode con:cols=80 lines=18
+		color f
+		cls
+		echo.
+		echo ================================================================================
+		echo       In order to update BioRand properly [and prevent bugs], it's highly 
+		echo        recommended that you remove all previous files and create a fresh
+		echo               build from source [or download it from GitHub Actions].
+		echo                     To know more, check out this link:
+		echo.
+		echo           https://twitter.com/re_biorand/status/1743314921616462218
+		echo.
+		echo.    IF YOU FIND ANY BUGS ON BIORAND, MAKE SURE TO TEST A FRESH INSTALL FROM 
+		echo    GITHUB ACTIONS BEFORE REACHING FOR USER SUPPORT. THE SCRIPT CREATOR ISN'T 
+		echo      RESPONSIBLE FOR HOW THE END USER MAKE USE OF BIORAND OR ANY PIECE OF
+		echo                     SOFTWARE THAT MAY BE INCLUDE WITH IT.
+		echo.
+		echo ================================================================================
+		pause
+	)
+
 	:: Clear screen and update res.
 	cls
 	color f
